@@ -1,17 +1,66 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Pokoje{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        nav {
+            background: #f0f0f0;
+            padding: 10px;
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #333;
+        }
+        nav a:hover {
+            color: #0066cc;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #0066cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 5px;
+        }
+        .button:hover {
+            background: #0055aa;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="{{ path('app_home') }}">Główna</a>
+    <a href="{{ path('app_lucky_number') }}">Losowa</a>
+    <a href="{{ path('app_about') }}">Bezfunkcji1</a>
+    <a href="{{ path('app_contact') }}">Bezfunkcji2</a>
+    <a href="{{ path('app_pokoje_index') }}">Pokoje</a>
+</nav>
+
+{% for type, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ type }} alert-dismissible fade show">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    {% endfor %}
+{% endfor %}
+
+{% block body %}{% endblock %}
+
+<footer style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px;">
+    <p>© 2025 Tyrada Wojciechowskiego Mateusza</p>
+</footer>
+</body>
 </html>

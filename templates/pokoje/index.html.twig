@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Room List{% endblock %}
+
+{% block body %}
+    <h1>All Rooms</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Rozmiar(m²)</th>
+            <th>Cena</th>
+            <th>Typ(zwierze)</th>
+            <th>Opcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for pokoj in pokoje %}
+            <tr>
+                <td>{{ pokoj.Wymiar }}</td>
+                <td>{{ pokoj.Cena }} PLN</td>
+                <td>{{ pokoj.Przeznaczenie }}</td>
+                <td>
+                    <a href="{{ path('app_pokoje_show', {'id': pokoj.id}) }}" class="btn btn-sm btn-info">View</a>
+                    <a href="{{ path('app_pokoje_edit', {'id': pokoj.id}) }}" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_pokoje_new') }}" class="btn btn-primary">Dodaj nowy pokój</a>
+{% endblock %}

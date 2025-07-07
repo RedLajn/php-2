@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edytuj Pokoje{% endblock %}
+
+{% block body %}
+    <h1>Edytuj</h1>
+
+    {{ include('pokoje/_form.html.twig', {'button_label': 'Aktualizuj'}) }}
+
+    <a href="{{ path('app_pokoje_index') }}">Powrót</a>
+
+    {{ include('pokoje/_delete_form.html.twig') }}
+{% endblock %}
